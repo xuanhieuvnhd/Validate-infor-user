@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Check điều kiện thành viên</title>
+</head>
+<body>
+<form th:object="${user}" th:action="@{/validateUser}" method="post" >
+    <table>
+        <tr>
+            <td>Nhập tên:</td>
+            <td><input th:field="*{name}"></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Tên sai quy tắc</td>
+        </tr>
+        <tr>
+            <td>Nhập tuổi:</td>
+            <td><input th:field="*{age}"></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Tên sai quy tắc</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Kiểm tra</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
